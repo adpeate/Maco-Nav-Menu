@@ -87,7 +87,7 @@ class Macopedia_EasyMenu_Block_Tree extends Mage_Core_Block_Template
                 if (count($children)) {
                     $html .= ' has-sublist ';
                 }
-                $html .= ' level-'.$level.' ';
+                $html .= ' level'.$level.' ';
 
                 $html .= '">';
 
@@ -107,7 +107,7 @@ class Macopedia_EasyMenu_Block_Tree extends Mage_Core_Block_Template
     protected function getLinkClassAttribute($category, $url, $level) {
         $attributes = array();
         $attributes[] = $this->getTypeClass($category);
-        $attributes[] = "level-{$level}";
+        $attributes[] = "level{$level}";
 
         if ($this->isElementActive($url)) {
             $attributes[] = 'current-page';
