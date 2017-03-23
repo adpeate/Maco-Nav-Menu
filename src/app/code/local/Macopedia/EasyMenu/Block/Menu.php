@@ -24,7 +24,7 @@ class Macopedia_EasyMenu_Block_Menu extends Mage_Core_Block_Template
      */
     public function getSaveUrl()
     {
-        return Mage::getUrl('easymenu/adminhtml_index/save/',
+        return Mage::getUrl('*/*/save/',
             array(
                 'store' => $this->_helper()->getStoreId(),
             )
@@ -38,7 +38,7 @@ class Macopedia_EasyMenu_Block_Menu extends Mage_Core_Block_Template
      */
     public function getDeleteUrl()
     {
-        return Mage::getUrl('easymenu/adminhtml_index/delete/',
+        return Mage::getUrl('*/*/delete/',
             array(
                 'store' => $this->_helper()->getStoreId(),
             )
