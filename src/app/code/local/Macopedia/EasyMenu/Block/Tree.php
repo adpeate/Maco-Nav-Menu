@@ -72,7 +72,7 @@ class Macopedia_EasyMenu_Block_Tree extends Mage_Core_Block_Template
      * @param bool $admin
      * @return string
      */
-    public function renderCategory($category, $admin = true)
+    public function renderCategory($category, $admin = true, $level = 0)
     {
         $children = $this->getChildrenCategories($category['id']);
         $html = '';
@@ -90,22 +90,23 @@ class Macopedia_EasyMenu_Block_Tree extends Mage_Core_Block_Template
 
                 $html .= '>';
 
-                $html .='<a ' . $this->getLinkClassAttribute($category, $url) . ' href="' .$url. '" id="el-' . $category['id'] . '">' . $category['name'] . '</a>';
+                $html .='<a ' . $this->getLinkClassAttribute($category, $url, $level) . ' href="' .$url. '" id="el-' . $category['id'] . '">' . $category['name'] . '</a>';
             }
         }
 
         if (count($children)) $html .= '<ul id="children-of-' . $category['parent'] . '">';
         foreach ($children as $child) {
-            $html .= $this->renderCategory($child, $admin);
+            $html .= $this->renderCategory($child, $admin, $level+1);
         }
         if (count($children)) $html .= '</ul>';
         $html .= '</li>';
         return $html;
     }
 
-    protected function getLinkClassAttribute($category, $url) {
+    protected function getLinkClassAttribute($category, $url, $level) {
         $attributes = array();
         $attributes[] = $this->getTypeClass($category);
+        $attributes[] = "level-{$level}";
 
         if ($this->isElementActive($url)) {
             $attributes[] = 'current-page';
