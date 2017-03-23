@@ -3,7 +3,8 @@
  * @var Macopedia_EasyMenu_Block_Tree $this
  */
 if(Mage::helper('EasyMenu')->isEnabled()): ?>
-    <ul id="nav">
+    <nav id="nav">
+		<ul class="nav-primary">
         <?php
         /**
          * @var $cat array
@@ -12,5 +13,6 @@ if(Mage::helper('EasyMenu')->isEnabled()): ?>
             echo $this->renderCategory($cat, false);
         }
         ?>
-    </ul>
+        </ul>
+    </nav>
 <?php endif; ?>

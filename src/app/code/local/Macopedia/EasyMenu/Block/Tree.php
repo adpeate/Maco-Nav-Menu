@@ -82,13 +82,14 @@ class Macopedia_EasyMenu_Block_Tree extends Mage_Core_Block_Template
             $url = $this->getLink($category['type'], $category['value']);
             if ($url) {
 
-                $html .= '<li';
+                $html .= '<li class="';
 
                 if (count($children)) {
-                    $html .= ' class="has-sublist"';
+                    $html .= ' has-sublist ';
                 }
+                $html .= ' level-'.$level.' ';
 
-                $html .= '>';
+                $html .= '">';
 
                 $html .='<a ' . $this->getLinkClassAttribute($category, $url, $level) . ' href="' .$url. '" id="el-' . $category['id'] . '">' . $category['name'] . '</a>';
             }
@@ -112,7 +113,7 @@ class Macopedia_EasyMenu_Block_Tree extends Mage_Core_Block_Template
             $attributes[] = 'current-page';
         }
 
-        return !empty($attributes)? 'class="' . implode(', ', $attributes) . '"' : '';
+        return !empty($attributes)? 'class="' . implode(' ', $attributes) . '"' : '';
     }
 
     protected function getTypeClass($category) {
